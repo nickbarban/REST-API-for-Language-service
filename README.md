@@ -2,6 +2,7 @@
 REST API for web app for studying foreign languages
 
 request: http://localhost:8080/
+
 response: {
 _links: {
 users: {
