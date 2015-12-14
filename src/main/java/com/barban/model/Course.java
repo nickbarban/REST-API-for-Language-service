@@ -22,7 +22,7 @@ public class Course {
 	private int id;
 
 	@NotEmpty
-	//@Size(min = 3, max = 20)
+	@Size(min = 3, max = 20)
 	@Column(name = "name", nullable = false)
 	private String name;
 	

@@ -31,17 +31,17 @@ public class User {
 	private int id;
 
 	@NotEmpty
-	//@Size(min = 3, max = 20)
+	@Size(min = 3, max = 20)
 	@Column(name = "name", nullable = false)
 	private String name;
 
 	@NotEmpty
-	//@Size(min = 3, max = 20)
+	@Size(min = 3, max = 20)
 	@Column(name = "login", unique = true, nullable = false)
 	private String login;
 
 	@NotEmpty
-	//@Size(min = 3, max = 20)
+	@Size(min = 3, max = 20)
 	@Column(name = "password", nullable = false)
 	private String password;
 
