@@ -7,5 +7,5 @@ import com.barban.model.User;
 
 @RepositoryRestResource
 public interface UserDao extends CrudRepository<User, Integer> {
-
+	
 }
