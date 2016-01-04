@@ -10,24 +10,25 @@ userManagerModule
 					$scope.selection = [];
 					$scope.states = [ 'Active', 'Inactive', 'Deleted', 'Locked' ];
 					$scope.profiles = [ 'USER', 'ADMIN', 'DBA' ];
-					$scope.languages = findAllLanguages(){
+
+					function findAllLanguages() {
 						$http
-						.get(urlBase + '/languages')
-						.success(
-								function(data) {
-									if (data._embedded != undefined) {
-										$scope.languages = data._embedded.languages;
-									} else {
-										$scope.users = [];
-									}
-									for (var i = 0; i < $scope.users.length; i++) {
-										if ($scope.users[i].state == 'Inactive') {
-											$scope.selection
-													.push($scope.users[i].userId);
-										}
-									}
-					};
+								.get(urlBase + '/languages')
+								.success(
+										function(data) {
+											if (data._embedded != undefined) {
+												$scope.languages = data._embedded.languages;
+											} else {
+												$scope.languages = [];
+											}
+											//$scope.toggle = '!toggle';
+
+										});
+					}
+
 					$http.defaults.headers.post["Content-Type"] = "application/json";
+
+					findAllLanguages();
 
 					function findAllUsers() {
 						$http
@@ -40,17 +41,18 @@ userManagerModule
 												$scope.users = [];
 											}
 											for (var i = 0; i < $scope.users.length; i++) {
+												$scope.users[i].language = getUserLanguageById($scope.users[i].userId)
 												if ($scope.users[i].state == 'Inactive') {
 													$scope.selection
 															.push($scope.users[i].userId);
 												}
 											}
-											//$scope.name = "";
-											//$scope.login = "";
-											//$scope.password = "";
-											//$scope.email = "";
-											//$scope.state = "";
-											//$scope.language == "";
+											$scope.name = "";
+											$scope.login = "";
+											$scope.password = "";
+											$scope.email = "";
+											$scope.state = "";
+											$scope.language = "";
 											$scope.toggle = '!toggle';
 										});
 					}
@@ -87,7 +89,7 @@ userManagerModule
 										$scope.toggle = '!toggle';
 									});
 						}
-						
+
 					};
 
 					$scope.toggleSelection = function toggleSelection(userUri) {

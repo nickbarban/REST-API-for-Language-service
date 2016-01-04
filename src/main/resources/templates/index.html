@@ -51,12 +51,12 @@
 					</div>
 					<div ng-if="user.state=='Inactive'">
 						<a href="#" class="checkedClass">{{user.name}}
-							{{user._links.language}} {{user.email}}<span class="action-status">{{user.state}}</span>
+							{{user._links.language.href}} {{user.email}}<span class="action-status">{{user.state}}</span>
 						</a>
 					</div>
 					<div ng-if="user.state=='Active'">
 						<a href="#" class="uncheckedClass"> {{user.name}}
-							{{user._links.language}} {{user.email}}<span class="action-status">{{name.state}}</span>
+							{{user._links.language.href}} {{user.email}}<span class="action-status">{{name.state}}</span>
 						</a>
 					</div>
 				</div>
